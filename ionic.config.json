@@ -1,0 +1,8 @@
+{
+  "name": "MockStock",
+  "app_id": "e2a3d338",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

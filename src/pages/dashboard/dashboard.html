@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    
+  	<ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+  	    <button ion-item class="chats-page-content">
+			<h2 class="chat-picture">Company</h2>
+			<div class="chat-info">
+			  <ion-badge class="own">You Own</ion-badge>
+			  <h2 class="chat-title">Price</h2>
+        	</div>
+		</button>
+</ion-header>
+
+<ion-content (swipe)="swipeEvent($event)" class="chats-page-content" id="page3">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+  	<ion-list class="chats"  (swipe)="swipeEvent($event)">
+	    <ion-item-sliding *ngFor="let compPrice of compPrices">
+	      <button ion-item class="chat" (click)="showCompany(compPrice.comp_abbr)">
+	        <h2 class="chat-picture">{{companies.get(compPrice.comp_abbr).name}}({{compPrice.comp_abbr}})</h2>
+	        <div class="chat-info">
+	          <h3><ion-badge class="own">{{stocks.get(compPrice.comp_abbr)}}</ion-badge></h3>
+	          <ion-icon *ngIf="!getArrow(compPrice.comp_abbr)" class="chat-title-1" name="arrow-round-down"></ion-icon>
+	          <ion-icon *ngIf="getArrow(compPrice.comp_abbr)" class="chat-title-2" name="arrow-round-up"></ion-icon>
+	          <h2 class="chat-title">₹{{compPrice.price}}&nbsp;</h2>
+	        </div>
+	      </button>
+	    </ion-item-sliding>
+	</ion-list>
+</ion-content>
+

@@ -1,0 +1,55 @@
+<!--
+  Generated template for the YourSharesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header (swipe)="swipeEvent($event)">
+
+  <ion-navbar>
+    <ion-title>Your Shares</ion-title>
+  </ion-navbar>
+	<ion-grid>
+	  <ion-row>
+	    <ion-col>
+	      Abbr
+	    </ion-col>
+	    <ion-col>
+	      Price
+	    </ion-col>
+	    <ion-col>
+	      Quantity
+	    </ion-col>
+	    <ion-col>
+	      Value
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+
+</ion-header>
+
+
+<ion-content (swipe)="swipeEvent($event)">
+	<div (swipe)="swipeEvent($event)" style="position: absolute;top:0;left:0;height:100%;width:100%;">	
+ 
+	<ion-grid *ngFor="let compAbbr of keys()" (swipe)="swipeEvent($event)">
+	  <ion-row>
+	    <ion-col>
+	      {{compAbbr}}
+	    </ion-col>
+	    <ion-col>
+	      ₹{{prices.get(compAbbr).price}}
+	    </ion-col>
+	    <ion-col>
+	      {{stocks.get(compAbbr)}}
+	    </ion-col>
+	    <ion-col>
+	      ₹{{stocks.get(compAbbr)*prices.get(compAbbr).price}}
+	    </ion-col>
+	</ion-row>
+	</ion-grid>
+	<ion-item-divider>
+	</ion-item-divider>
+	<h4 padding style="text-align: center;" (swipe)="swipeEvent($event)">Total Stocks Evaluation: ₹{{getTotal()}}</h4>
+	</div>
+</ion-content>

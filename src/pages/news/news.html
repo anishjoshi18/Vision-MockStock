@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      News
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content id="page4" (swipe)="swipeEvent($event)">
+	<div (swipe)="swipeEvent($event)" style="position: absolute;top:0;left:0;height:100%;width:100%;">	
+ 
+
+ 
+	<ion-list *ngFor="let time of newsKeys()" (swipe)="swipeEvent($event)">
+	    <ion-card (click)="showNews(lnews.get(time))" [ngStyle]="{'background-color':lnews.get(time).effect === false ? 'rgb(200,255,255)' : 'rgb(250,255,255)' }">
+		    <ion-card-content>
+		      <ion-card-title>
+		        <h2>{{lnews.get(time).heading}}</h2>
+		      </ion-card-title>
+		      	<ion-note>{{time.substring(0,2)}}/{{time.substring(2,4)}}/{{time.substring(4,6)}} 
+	      				{{time.substring(6,8)}}:{{time.substring(8,10)}}:{{time.substring(10,12)}}</ion-note>
+		    </ion-card-content>
+		</ion-card>
+	
+	</ion-list>
+	</div>
+</ion-content>

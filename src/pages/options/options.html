@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Your Profile
+    </ion-title>
+    <ion-buttons end>
+      <button id="options-button1" on-click="logout()" ion-button icon-only>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content (swipe)="swipeEvent($event)" padding id="page8" class=" cards-bg">
+  <div (swipe)="swipeEvent($event)" style="position: absolute;top:0;left:0;height:100%;width:100%;">  
+ 
+  <ion-card  (swipe)="swipeEvent($event)" class="cards-list-demo">
+  <ion-card-header>
+    {{getTeamName()}} 
+  </ion-card-header>
+
+  <ion-list (swipe)="swipeEvent($event)">
+    <button ion-item>
+      <ion-icon name='person' item-start></ion-icon>{{getPart1()}}
+    </button>
+
+    <button ion-item>
+      <ion-icon name='person' item-start></ion-icon>{{getPart2()}}
+    </button>
+
+    <ion-item>
+      <ion-icon name='cash' item-start></ion-icon>Current Balance: <h2 style="float: right;">₹{{getBalance()}}</h2>
+    </ion-item>
+  
+    <ion-item>
+       <ion-icon name='cart' item-start></ion-icon>Total Evaluation: <h2 style="float: right;">₹{{getBalance()+getTotal()}}</h2>
+    </ion-item>
+
+  </ion-list>
+
+</ion-card>
+<br><br>
+<button ion-item (click)="page1()">
+  About
+</button>
+
+<button ion-item (click)="page()">
+  Feedback
+</button>
+
+ </div> 
+</ion-content>

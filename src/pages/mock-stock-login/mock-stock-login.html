@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Mock Stock Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <form id="mockStockLogin-form1">
+    <ion-list id="mockStockLogin-list1">
+      <ion-item id="mockStockLogin-input1">
+        <ion-label floating>
+          Team ID
+        </ion-label>
+        <ion-input type="text" placeholder="" name="teamid" #teamid></ion-input>
+      </ion-item>
+      <ion-item id="mockStockLogin-input2">
+        <ion-label floating>
+          Password
+        </ion-label>
+        <ion-input type="password" placeholder="" name="password" #password></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="spacer" style="height:20px;" id="mockStockLogin-spacer1"></div>
+  </form>
+  <button id="mockStockLogin-button3" ion-button color="positive" block on-click="loginUser()">
+    Log In
+  </button>
+  <div class="spacer" style="height:8px;" id="mockStockLogin-spacer2"></div>
+  <button id="Forget-button4" ion-button color="positive" block small clear on-click="forgetPassword()">
+    Forget Password!
+  </button>
+  <div class="spacer" style="width:300px;height:20px;" id="mockStockLogin-spacer4"></div>
+  <div>
+    <a style="display:block;" href-inappbrowser="http://www.wcevision.co.in/">
+      <img src="assets/img/vTPsduP7SpaXNuxFzqG1_VisionLogo.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+    </a>
+  </div>
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header>
+  
+  <ion-navbar>
+    <ion-title>{{selectedCompany.name}} : ₹{{prices.get(selectedCompanyAbbr).price}}</ion-title>
+  </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content padding>
+	<button ion-button style="width: 80px" (click)="presentPrompt('Buy')">Buy</button>
+	<button ion-button style="float:right; width: 80px" (click)="presentPrompt('Sell')">Sell</button>
+	<h4 style="text-align: center;">You own: {{getStocks()}}</h4>
+	<span>Highest: ₹{{getHigh()}}</span>
+	<span style="float: right;">Lowest: ₹{{getLow()}}</span>
+	
+	<ion-item-divider>
+	</ion-item-divider>
+
+	<ion-card padding>
+		<ion-card-title><h2><b>About {{selectedCompany.name}} ({{selectedCompanyAbbr}}):</b></h2></ion-card-title>
+		{{selectedCompany.desc}}<br><div style="color: blue" (click)="getDescription()">Read more</div>
+	</ion-card>
+
+	<h4>Transactions with {{selectedCompany.name}}</h4>
+	<b>
+	<ion-grid>
+	  <ion-row>
+	    <ion-col>
+	      Date<br>Time
+	    </ion-col>
+	    <ion-col>
+	      B/S
+	    </ion-col>
+	    <ion-col>
+	      Quantity
+	    </ion-col>
+	    <ion-col>
+	      Price<br>Total
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+	</b>
+	 <ng-container *ngFor="let time of keys()">
+	 	<ng-container *ngIf="compStocks!=null">
+		<ion-row *ngIf="compStocks.get(time).comp === selectedCompanyAbbr">
+	    <ion-col>
+	      {{time.substring(0,2)}}/{{time.substring(2,4)}}/{{time.substring(4,6)}}<br>
+	      {{time.substring(6,8)}}:{{time.substring(8,10)}}:{{time.substring(10,12)}}
+	    </ion-col>
+	    <ion-col>
+	      {{compStocks.get(time).tran}}
+	    </ion-col>
+	    <ion-col>
+	      {{compStocks.get(time).quantity}}
+	    </ion-col>
+	    <ion-col>
+	      ₹{{compStocks.get(time).price}}<br>₹{{compStocks.get(time).price*compStocks.get(time).quantity}}
+	    </ion-col>
+	  </ion-row>
+	</ng-container>
+	</ng-container>
+	
+	<h4>News related to {{selectedCompany.name}}</h4>
+	<ion-list *ngFor="let time of newsKeys()">
+		<ion-card (click)="showNews(lnews.get(time))">
+			    <ion-card-content>
+			      <ion-card-title>
+			        <h2>{{lnews.get(time).heading}}</h2>
+			      </ion-card-title>
+			      	<ion-note>{{time.substring(0,2)}}/{{time.substring(2,4)}}/{{time.substring(4,6)}} 
+		      				{{time.substring(6,8)}}:{{time.substring(8,10)}}:{{time.substring(10,12)}}</ion-note>
+			    </ion-card-content>
+		</ion-card>
+			
+	</ion-list>
+	<div id='no'></div>
+
+</ion-content>
